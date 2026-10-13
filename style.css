@@ -29,6 +29,12 @@ header {
   gap: 20px;
 }
 
+.logo{
+  width: 350px;
+  position: absolute;
+  left: 0;
+}
+
 nav {
   background: var(--secondary);
   padding: 10px;
@@ -41,7 +47,7 @@ nav {
   }
 
   & li {
-    font-size: 15px;
+    font-size: 18.5px;
     list-style-type: none;
     padding: 5px;
     border-radius: 10px;
