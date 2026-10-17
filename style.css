@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--text);
 }
 
 :root {
@@ -15,28 +14,37 @@
   --accent: #7b97b0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   font-family: 'Fira Code';
+  color: var(--text);
 }
 
 header {
+  position: relative;
   padding-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background: red;
 }
 
-.logo{
+.logo {
+  margin-top: 100px;
   width: 350px;
   position: absolute;
   left: 0;
 }
 
 nav {
+  top: 0;
+  margin-top: 10px;
+  position: fixed;
   background: var(--secondary);
   padding: 10px;
   border-radius: 10px;
@@ -52,16 +60,18 @@ nav {
     list-style-type: none;
     padding: 5px;
     border-radius: 10px;
-    transition: background .5s ease;
+    transition: background 0.5s ease;
     cursor: pointer;
   }
 
-  & li:hover{
+  & li:hover {
     background: var(--accent);
   }
 }
 
 .choose-introduction {
+  position: fixed;
+  top: 10%;
   display: flex;
   align-items: center;
   gap: 25px;
@@ -79,21 +89,85 @@ nav {
     background: var(--secondary);
     color: var(--text);
     border: 2px solid transparent;
-    transition: border-color .5s ease;
+    transition: border-color 0.5s ease;
   }
 
   & #start:hover {
     border-color: var(--primary);
   }
 
-  & #between{
+  & #between {
     background: var(--background);
     color: var(--text);
     border: 2px solid var(--accent);
-    transition: border-color .5s ease;
+    transition: border-color 0.5s ease;
   }
 
   & #between:hover {
     border-color: var(--secondary);
+  }
+}
+
+span {
+  color: transparent;
+  font-style: italic;
+  -webkit-text-stroke: 2px var(--primary);
+}
+
+.boat-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.boat-animation video,
+.boat-animation .boat-hero {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.boat-animation .boat-hero {
+  z-index: 1;
+}
+
+.boat-animation video {
+  z-index: 2;
+  transition: opacity 1s ease;
+  opacity: 1;
+}
+
+.boat-animation video.animation-transition {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero {
+  margin: 250px 0;
+}
+
+.title-hero {
+  margin-left: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1;
+  position: relative;
+
+  & h1 {
+    font-size: 40px;
+    width: 50%;
+  }
+
+  & p {
+    width: 50%;
+    font-size: 20px;
+    color: var(--accent);
   }
 }
