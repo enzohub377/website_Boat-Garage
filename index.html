@@ -30,62 +30,70 @@
       </svg>
       <nav>
         <ul>
-          <li>Services</li>
-          <li>About Us</li>
-          <li>Contact</li>
-          <li>Employee</li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#about">Sobre nós</a></li>
+          <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
       <div class="choose-introduction">
-        <button id="between">To enter</button>
-        <button id="start">Start now</button>
+        <button id="between">Entrar</button>
+        <button id="start">Cadastrar-se</button>
       </div>
     </header>
+    <main tabindex="-1">
+      <section class="hero">
+        <div class="boat-animation" id="boatAnimation">
+          <img
+            src="assets/boat-outdoor.jpg"
+            alt="Imagem do exterior da embarcação XO Cruiser"
+            class="boat-hero"
+          />
+          <video id="animation" autoplay muted playsinline>
+            <source src="assets/boat-animation.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="title-hero">
+          <h1>
+            <span>Liderança</span> e <span>Exclusividade</span> no Comércio de
+            Veículos Marítimos
+          </h1>
+          <p>
+            Descubra a nossa frota de alta performance e viva experiências
+            inesquecíveis sobre as águas com total segurança e sofisticação.
+          </p>
+        </div>
+        <div class="view-vehicles">
+          <button class="view-XO-Cruiser">Visualizar XO Cruiser</button>
+          <button>Ver principais veículos</button>
+        </div>
+      </section>
 
-    <section class="hero">
-      <div class="boat-animation" id="boatAnimation">
-        <img src="assets/boat-outdoor.jpg" alt="Imagem do exterior do barco" class="boat-hero">
-        <video id="animation" autoplay muted playsinline>
-          <source src="assets/boat-animation.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="title-hero">
-        <h1>
-          <span>Liderança</span> e <span>Exclusividade</span> no Comércio de
-          Veículos Marítimos
-        </h1>
-        <p>
-          Descubra a nossa frota de alta performance e viva experiências
-          inesquecíveis sobre as águas com total segurança e sofisticação.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="services-cards">
-        <div>
-          <!-- <h3>Comércio de Embarcações</h3>
+      <section id="services">
+        <div class="services-cards">
+          <div>
+            <!-- <h3>Comércio de Embarcações</h3>
           <p>
             Aquisição e venda de lanchas, iates e jet skis rigorosamente
             selecionados para garantir o máximo desempenho e conforto.
           </p> -->
-        </div>
-        <div>
-          <!-- <h3>Manutenção Especializada</h3>
+          </div>
+          <div>
+            <!-- <h3>Manutenção Especializada</h3>
           <p>
             Serviços completos de revisão mecânica, estética náutica e cuidados
             preventivos para manter o seu veículo sempre pronto.
           </p> -->
-        </div>
-        <div>
-          <!-- <h3>Consultoria Náutica</h3>
+          </div>
+          <div>
+            <!-- <h3>Consultoria Náutica</h3>
           <p>
             Orientação personalizada para escolha do modelo ideal, documentação
             e suporte completo em todas as etapas da compra.
           </p> -->
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
