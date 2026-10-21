@@ -33,26 +33,16 @@ body {
 }
 
 header {
-  position: relative;
   padding-top: 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 20px;
-}
-
-.logo {
-  margin-top: 100px;
-  width: 350px;
-  position: absolute;
-  left: 0;
+  margin-bottom: 75px;
 }
 
 nav {
-  top: 0;
   margin-top: 10px;
-  position: fixed;
   background: var(--secondary);
   padding: 10px;
   border-radius: 10px;
@@ -87,13 +77,15 @@ nav {
 }
 
 .choose-introduction {
-  position: fixed;
   top: 10%;
   display: flex;
   align-items: center;
   gap: 25px;
 
-  & button {
+  & #start,
+  #between {
+    color: var(--text);
+    transition: border-color 0.5s ease;
     border: none;
     font-size: 20px;
     padding: 7.5px;
@@ -104,9 +96,7 @@ nav {
 
   & #start {
     background: var(--secondary);
-    color: var(--text);
     border: 2px solid transparent;
-    transition: border-color 0.5s ease;
   }
 
   & #start:hover {
@@ -115,9 +105,7 @@ nav {
 
   & #between {
     background: var(--background);
-    color: var(--text);
     border: 2px solid var(--accent);
-    transition: border-color 0.5s ease;
   }
 
   & #between:hover {
@@ -131,7 +119,7 @@ span {
   -webkit-text-stroke: 2px var(--primary);
 }
 
-.boat-animation {
+/* .boat-animation {
   position: fixed;
   top: 0;
   left: 0;
@@ -162,11 +150,7 @@ span {
 .boat-animation video.animation-transition {
   opacity: 0;
   pointer-events: none;
-}
-
-.hero {
-  margin: 250px 0;
-}
+} */
 
 .title-hero {
   margin-left: 30px;
@@ -187,6 +171,21 @@ span {
     font-size: 20px;
     color: var(--accent);
   }
+}
+
+.hero-img-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-img-content img {
+  position: absolute;
+  width: 660px;
+  border-radius: 20px 60px 20px 60px;
+  right: 20px;
+  box-shadow: rgba(255, 255, 255, 0.06) 0px 30px 90px;
 }
 
 .view-vehicles {
