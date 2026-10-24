@@ -32,8 +32,12 @@ body {
   color: var(--text);
 }
 
+.logo {
+  width: 250px;
+}
+
 header {
-  padding-top: 10px;
+  padding-top: 15px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -111,6 +115,29 @@ nav {
   & #between:hover {
     border-color: var(--secondary);
   }
+}
+
+.icons-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.icon-garage,
+.icon-change-theme {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.icon-garage:hover,
+.icon-change-theme:hover {
+  filter: drop-shadow(7px 7px 12px #3162c5);
+  transform: translate(0, -3px);
 }
 
 span {
