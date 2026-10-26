@@ -13,11 +13,11 @@
   --secondary: #425464;
   --accent: #7b97b0;
 
-  /* --text: #ecf7f3;
-  --background: #000d08;
-  --primary: #92d4bb;
-  --secondary: #32507e;
-  --accent: #5a69be; */
+  /* --text: #d7faf5;
+  --background: #010b09;
+  --primary: #81efdf;
+  --secondary: #12418c;
+  --accent: #364ce5; */
 }
 
 html {
@@ -37,11 +37,15 @@ body {
 }
 
 header {
+  backdrop-filter: blur(20px);
   padding-top: 15px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 20px;
+  border-radius: 0 0 10px 10px;
+  border-bottom: 1px solid #ffffff2d;
   margin-bottom: 75px;
 }
 
@@ -129,15 +133,42 @@ nav {
   cursor: pointer;
   width: 25px;
   height: 25px;
-  transition:
-    transform 0.5s ease,
-    filter 0.5s ease;
+  padding: 3px;
+  box-sizing: content-box;
+  transition: transform 0.2s ease;
 }
 
 .icon-garage:hover,
 .icon-change-theme:hover {
-  filter: drop-shadow(7px 7px 12px #3162c5);
-  transform: translate(0, -3px);
+  transform: translate(0, -5px);
+}
+
+#garageCoverage {
+  fill: var(--accent);
+}
+
+#garageDoor {
+  fill: var(--secondary);
+}
+
+.icon-garage #garageCoverage,
+.icon-garage #garageDoor {
+  transition: filter 0.2s ease;
+}
+
+.icon-garage:hover #garageCoverage,
+.icon-garage:hover #garageDoor {
+  filter: brightness(0) invert(3);
+}
+
+.icon-change-theme {
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.icon-change-theme:hover {
+  filter: brightness(0) invert(3);
 }
 
 span {
