@@ -311,3 +311,12 @@ main {
     transform: translate(0, -3px);
   }
 }
+
+.scroll-animation{
+  margin-top: 30px;
+}
+
+.scroll-animation video{
+  border-radius: 20px;
+  width: 100%;
+}
