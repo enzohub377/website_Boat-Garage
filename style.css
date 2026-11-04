@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fira%20Code:700|Fira%20Code:400');
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 * {
   margin: 0;
@@ -30,6 +31,21 @@ body {
 .logo {
   width: 250px;
   cursor: pointer;
+  padding: 7.5px;
+  border-radius: 10px;
+  transition: box-shadow 0.5s ease;
+}
+
+.logo:hover {
+  box-shadow:
+    #7b97b010 0px -23px 25px 0px inset,
+    #7b97b006 0px -36px 30px 0px inset,
+    #7b97b009 0px -79px 40px 0px inset,
+    #7b97b00f 0px 2px 1px,
+    #7b97b017 0px 4px 2px,
+    #7b97b017 0px 8px 4px,
+    #7b97b00c 0px 16px 8px,
+    #7b97b008 0px 32px 16px;
 }
 
 header {
@@ -39,7 +55,7 @@ header {
   left: 0;
   z-index: 1000;
   background: transparent;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   padding-top: 15px;
   padding-bottom: 10px;
   display: flex;
@@ -53,7 +69,8 @@ header {
 
 nav {
   margin-top: 10px;
-  background: var(--secondary);
+  border: 2px solid var(--secondary);
+  background: transparent;
   padding: 10px;
   border-radius: 10px;
 
@@ -68,21 +85,44 @@ nav {
   }
 
   & a {
+    position: relative;
     color: var(--text);
     text-decoration: none;
     font-size: 18.5px;
     padding: 5px;
     border-radius: 10px;
-    transition: background 0.5s ease;
     cursor: pointer;
   }
 
-  & a:hover {
-    background: var(--accent);
+  & a::after {
+    content: '';
+    position: absolute;
+    background: var(--text);
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    bottom: 0;
+    width: 0;
+    transition:
+      width 0.5s ease-out,
+      opacity 0.5s ease-in-out;
+  }
+
+  & a:hover:not(:focus)::after {
+    width: 100%;
+    opacity: 1;
+  }
+
+  & a:focus::after,
+  & a:active::after {
+    width: 0;
+    opacity: 0;
   }
 
   & a:focus {
-    background: var(--background);
+    background: var(--secondary);
+    outline: none;
   }
 }
 
@@ -127,50 +167,21 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 15px;
 }
 
-.icon-garage,
-.icon-change-theme {
+.i-navbar {
   cursor: pointer;
-  width: 25px;
-  height: 25px;
-  padding: 3px;
-  box-sizing: content-box;
-  transition: transform 0.2s ease;
-}
-
-.icon-garage:hover,
-.icon-change-theme:hover {
-  transform: translate(0, -5px);
-}
-
-#garageCoverage {
-  fill: var(--accent);
-}
-
-#garageDoor {
-  fill: var(--secondary);
-}
-
-.icon-garage #garageCoverage,
-.icon-garage #garageDoor {
-  transition: filter 0.2s ease;
-}
-
-.icon-garage:hover #garageCoverage,
-.icon-garage:hover #garageDoor {
-  filter: brightness(0) invert(3);
-}
-
-.icon-change-theme {
+  color: var(--accent);
+  font-size: 20px;
   transition:
-    filter 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    color 0.5s ease;
 }
 
-.icon-change-theme:hover {
-  filter: brightness(0) invert(3);
+.i-navbar:hover {
+  transform: translate(0, -3px);
+  color: var(--secondary);
 }
 
 /* .boat-animation {
@@ -254,7 +265,7 @@ main {
     font-size: 110px;
     font-style: italic;
     font-family: 'BBH Bartle', sans-serif;
-    color: rgba(255, 255, 255, 0.259);
+    color: rgba(0, 0, 0, 0.375);
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.259);
     white-space: nowrap;
     pointer-events: none;
@@ -262,10 +273,11 @@ main {
   }
 
   & h1 {
+    font-family: 'Courgette', cursive;
     font-style: italic;
     font-size: 55px;
     line-height: 55px;
-    width: 50%;
+    width: 40%;
     color: var(--text);
     text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
   }
@@ -298,9 +310,9 @@ main {
     color: var(--text);
     padding: 8.5px;
     font-size: 20px;
+    border-radius: 5px;
     background: rgba(0, 0, 0, 0.685);
     border: 1px solid var(--primary);
-    border-radius: 15px;
     transition:
       transform 0.2s ease,
       box-shadow 0.5s ease;
@@ -312,11 +324,11 @@ main {
   }
 }
 
-.scroll-animation{
+.scroll-animation {
   margin-top: 30px;
 }
 
-.scroll-animation video{
+.scroll-animation video {
   border-radius: 20px;
   width: 100%;
 }
