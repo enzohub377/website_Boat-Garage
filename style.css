@@ -171,6 +171,7 @@ nav {
 }
 
 .i-navbar {
+  position: relative;
   cursor: pointer;
   color: var(--accent);
   font-size: 20px;
@@ -182,6 +183,21 @@ nav {
 .i-navbar:hover {
   transform: translate(0, -3px);
   color: var(--secondary);
+}
+
+.i-navbar:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  color: var(--text);
+  padding: 5px 7.5px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Courgette', cursive;
+  white-space: nowrap;
 }
 
 main {
@@ -278,7 +294,7 @@ main {
     padding: 8.5px;
     font-size: 20px;
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.685);
+    background: #000000af;
     border: 1px solid var(--primary);
     transition:
       transform 0.2s ease,
@@ -286,7 +302,7 @@ main {
   }
 
   & button:hover {
-    box-shadow: var(--accent) 0px 3px 6px;
+    box-shadow: #373a714d 0px 19px 38px, #28365838 0px 15px 12px;
     transform: translate(0, -3px);
   }
 }

@@ -12,7 +12,7 @@ const frameCount = 250;
 
 // Função que monta o caminho correto de cada imagem baseado no índice
 const currentFrame = index => (
-  `assets/scroll-video-frame/scroll-frame${(index + 1).toString().padStart(3, '0')}.png`
+  `assets/scroll-XOcruiser-frame/scroll-frame${(index + 1).toString().padStart(3, '0')}.webp`
   // Ajuste o "boat-garage_" acima caso o nome do seu arquivo seja diferente!
 );
 
