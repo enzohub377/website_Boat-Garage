@@ -1,58 +1,100 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const canvas = document.getElementById("hero-canvas");
-const context = canvas.getContext("2d");
+const canvas = document.getElementById('boatAnimation');
+const context = canvas.getContext('2d');
 
-// Define a resolução nativa do canvas (Full HD para acompanhar a qualidade do seu vídeo)
 canvas.width = 1920;
 canvas.height = 1080;
 
-// VEJA AQUI: Coloque a quantidade exata de imagens que vieram dentro do seu ZIP
-const frameCount = 250; 
+const frameCount = 250;
 
-// Função que monta o caminho correto de cada imagem baseado no índice
-const currentFrame = index => (
-  `assets/scroll-XOcruiser-frame/scroll-frame${(index + 1).toString().padStart(3, '0')}.webp`
-  // Ajuste o "boat-garage_" acima caso o nome do seu arquivo seja diferente!
-);
+const currentFrame = (index) =>
+  `assets/scroll-XOcruiser-frame/scroll-frame${(index + 1).toString().padStart(3, '0')}.webp`;
 
-// Objeto virtual que o GSAP usará para animar os números dos frames
 let boatAnimation = { frame: 0 };
 let images = [];
 let imagesLoaded = 0;
 
-// Loop para pré-carregar todas as imagens na memória do navegador (evita piscadas em branco)
 for (let i = 0; i < frameCount; i++) {
   const img = new Image();
   img.src = currentFrame(i);
   img.onload = () => {
     imagesLoaded++;
-    // Inicia a animação assim que a primeira imagem estiver pronta
-    if (imagesLoaded === 1) render(); 
+    if (imagesLoaded === 1) render();
   };
   images.push(img);
 }
 
-// Cria a linha do tempo amarrada ao ScrollTrigger
-gsap.to(boatAnimation, {
-  frame: frameCount - 1,
-  snap: "frame", // Força o GSAP a arredondar para números inteiros (frame 1, frame 2...)
-  ease: "none",  // Mantém a velocidade linear com o scroll
+// Cria uma linha do tempo única controlada pelo ScrollTrigger
+const tl = gsap.timeline({
   scrollTrigger: {
-    trigger: ".scroll-animation",
-    start: "top top",
-    end: "+=4000", // Aumente esse valor se quiser que o scroll do vídeo dure mais tempo na tela
-    scrub: 0.5,    // Suavização ultra leve para dar o aspecto de cinema
-    pin: true,     // Trava a seção na tela
-    invalidateOnRefresh: true
+    trigger: '.scroll-animation',
+    start: 'top top',
+    end: '+=4500', // Aumentei um pouco para dar tempo confortável de leitura nos 3 cards
+    scrub: 1.5,
+    pin: true,
+    invalidateOnRefresh: true,
   },
-  onUpdate: render // Executa a função de desenhar a imagem a cada movimento do scroll
 });
 
-// Desenha a imagem atual no Canvas
+// 1. Animação principal dos 250 frames (dura toda a timeline: do 0 ao 10)
+tl.to(
+  boatAnimation,
+  {
+    frame: frameCount - 1,
+    snap: 'frame',
+    ease: 'none',
+    duration: 10,
+    onUpdate: render,
+  },
+  0,
+);
+
+// 2. CARD 1: Aparece no início (1.0) e some antes do meio (3.5)
+tl.fromTo(
+  '.card-1',
+  { opacity: 0, y: 40 },
+  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+  1.0, // Momento de entrada (10% do scroll)
+).to(
+  '.card-1',
+  { opacity: 0, y: -40, duration: 0.8, ease: 'power2.in' },
+  3.2, // Momento de saída (32% do scroll)
+);
+
+// 3. CARD 2: Aparece no meio (4.2) e some em (6.8)
+tl.fromTo(
+  '.card-2',
+  { opacity: 0, y: 40 },
+  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+  4.2, // Momento de entrada (42% do scroll)
+).to(
+  '.card-2',
+  { opacity: 0, y: -40, duration: 0.8, ease: 'power2.in' },
+  6.5, // Momento de saída (65% do scroll)
+);
+
+// 4. CARD 3: Aparece na reta final (7.5) e fica até quase o fim (9.5)
+tl.fromTo(
+  '.card-3',
+  { opacity: 0, y: 40 },
+  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+  7.5, // Momento de entrada (75% do scroll)
+).to(
+  '.card-3',
+  { opacity: 0, y: -40, duration: 0.8, ease: 'power2.in' },
+  9.2, // Momento de saída (92% do scroll)
+);
+
 function render() {
   if (images[boatAnimation.frame]) {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(images[boatAnimation.frame], 0, 0, canvas.width, canvas.height);
+    context.drawImage(
+      images[boatAnimation.frame],
+      0,
+      0,
+      canvas.width,
+      canvas.height,
+    );
   }
 }
